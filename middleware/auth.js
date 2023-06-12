@@ -1,4 +1,3 @@
-import jwt from 'jsonwebtoken';
 import UnauthenticatedError from '../errors/unauthenticated.js';
 import { isTokenValid } from '../utils/helpers/jwt.js';
 

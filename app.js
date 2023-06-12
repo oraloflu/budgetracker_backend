@@ -11,7 +11,7 @@ import morgan from 'morgan';
 import AuthRoutes from './routes/Auth/AuthRoutes.js';
 import TransactionRoutes from './routes/Transaction/TransactionRoutes.js';
 import errorHandlerMiddleware from './middleware/error-handler.js';
-import notFoundMiddleware from './errors/not-found.js';
+import notFoundMiddleware from './middleware/not-found.js';
 
 // https://www.behance.net/gallery/65608331/Expense-Tracker-Dashboard-%28With-live-demo%29
 export class App {
@@ -39,6 +39,10 @@ export class App {
         App.app.use(xss());
         App.app.use(mongoSanitize());
         App.app.use(morgan('tiny'));
+
+        App.app.get('/api/v1', (req, res) => {
+            res.send("It's alive!!!");
+        });
 
         App.app.use('/api/v1/auth', AuthRoutes);
         App.app.use('/api/v1/transaction', TransactionRoutes);

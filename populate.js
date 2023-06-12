@@ -70,10 +70,10 @@ const rationalizeData = (data) => {
                 data[i].payment_mode = income_mapping.payment_mode;
             }
         }
+        console.log(data)
         return data;
     } else return null;
 };
-
 const run = async () => {
     try {
         await connectDB(process.env.MONGO_URI);
