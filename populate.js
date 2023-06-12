@@ -45,14 +45,15 @@ const rationalizeData = (data) => {
         ]
     };
 
-    const types = {
+    const TRANSACTION_TYPES = {
         expense: 'expense',
         income: 'income'
     };
 
+    Object.freeze(TRANSACTION_TYPES);
     if (data !== undefined && data.length > 0) {
         for (let i = 0; i < data.length; i++) {
-            if (data[i].type === types['expense']) {
+            if (data[i].type === TRANSACTION_TYPES['expense']) {
                 data[i].description =
                     expense_mapping.description[
                         random(expense_mapping.description.length)
@@ -61,7 +62,7 @@ const rationalizeData = (data) => {
                     expense_mapping.category[random(expense_mapping.category.length)];
             }
 
-            if (data[i].type === types['income']) {
+            if (data[i].type === TRANSACTION_TYPES['income']) {
                 data[i].description =
                     income_mapping.description[random(income_mapping.description.length)];
                 data[i].category =
